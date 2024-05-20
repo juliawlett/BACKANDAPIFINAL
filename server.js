@@ -5,6 +5,12 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Rota para a raiz do servidor
+app.get('/', (req, res) => {
+    res.send('Bem-vindo ao meu servidor!');
+});
+
+// Rota para obter dados da API
 app.get('/api/data', async (req, res) => {
     try {
         const response = await axios.get('https://raw.githubusercontent.com/juliawlett/APIWeeke/main/API.json', {
@@ -20,4 +26,3 @@ app.get('/api/data', async (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
-
